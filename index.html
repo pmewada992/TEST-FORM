@@ -71,7 +71,6 @@
 </head>
 <body>
   <div class="form-container">
-    <form action="https://script.google.com/macros/s/AKfycbwvbX53xR3cweHkuuyPXzUqzme_3UDUonfQ5e8rhI233S5QOZyE52tAmZyYMapJjywx/exec" method="post">
       <label for="fullName">Full Name <span class="required">*</span></label>
       <input type="text" id="fullName" name="fullName" required>
 
@@ -87,7 +86,19 @@
         <label><input type="radio" name="gender" value="Female"> Female</label>
         <label><input type="radio" name="gender" value="Other"> Other</label>
       </div>
+  <Script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvbX53xR3cweHkuuyPXzUqzme_3UDUonfQ5e8rhI233S5QOZyE52tAmZyYMapJjywx/exec'
+const form = document.forms['contact-form']
 
+form.addEventListener('submit', e => {
+  
+  e.preventDefault()
+  
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! Form is submitted" ))
+  .then(() => { window.location.reload(); })
+  .catch(error => .error('Error!', error.message))
+    <Script>
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
